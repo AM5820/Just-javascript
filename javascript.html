@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>javascript</title>
+</head>
+	
+	<div id="dv" style="width:200px;height: 200px;background: red">
+		
+	</div>
+	<input type="button" id="btn" value="change color" onClick="change()">
+	
+	<div id="dv2">
+		<p>Ahmed</p>
+		<p>Sara</p>
+	</div>
+	<input type="button" value="change color" onClick="change2()">
+	
+	<br/><br/>
+	<button onClick="create()">Create Node</button>
+	
+	<div id="dv3" style="width:300px;height:300px;background:black;position: relative;overflow: hidden">
+		<div id="dv4" style="width:50px;height:50px;background:blue;position:absolute">
+			
+		</div>
+		<p id="pin" style="position:absolute;top:50px;color:red;left:80px"></p>
+	</div>
+	<br/>
+	<button onClick="start()">move</button>
+
+<script language="javascript" type="application/javascript">
+	document.write("<h3>Hello world</h3>");
+	
+	
+	for(var x=1;x<=10;x++)
+		{
+			document.write(x);
+			document.write("<br/>");
+		}
+	
+	
+	//var person = {name:"Ahmed gbr" , age:21 , faculty:"FCIH"}
+	//document.write(person.name.length);
+	
+	//var ar = new Array("Ahmed","Sara");
+	//ar[0] = "Ahmed";
+	//ar[1]="Sara";
+	//document.write(ar.length);
+	
+	function change()
+	{
+		var x = Math.floor(Math.random()*1000000);
+		color = "#"+x;
+		document.getElementById("dv").style.background=color;
+	}
+	
+	function change2()
+	{
+		var ar = document.getElementsByTagName("p");
+		ar[0].style.color = "red";
+		
+	}
+	
+	var x=0;
+	function create()
+	{
+		var color = Math.floor(Math.random()*1000000);
+		color = "#"+color;
+		x++;
+		var a = document.createElement("a");
+		var n = document.createTextNode("Google"+x);
+		a.appendChild(n);
+		a.style.color=color;
+		a.href="https://www.google.com";
+		a.target="_blank";
+		document.body.append(a);
+		
+		var br = document.createElement("br");
+		document.body.append(br);
+	}
+	
+
+	//setInterval(change,500);
+	
+	var left = 0;
+	var dr   = 1;
+	function move()
+	{
+		var box   = document.getElementById("dv4");
+		
+		if(dr==1)
+			{
+				left+=1;
+				box.style.left=left+"px";
+				
+				if(left==249)
+					{
+						dr = 0;
+					}
+				
+			}
+		else if(dr==0)
+			{
+				left-=1;
+				box.style.left=left+"px";
+				
+				if(left==1)
+					{
+						dr = 1;
+					}
+			}
+		var color = Math.floor(Math.random()*1000000);
+		box.style.background="#"+color;
+		
+		
+	}
+	
+	var count = 0;
+	function start()
+	{
+		
+		
+		if(count%2==0)
+			{
+				t = setInterval(move,20);
+				count+=1;
+			}
+		else
+			{
+				clearInterval(t);
+				count+=1;
+			}
+		
+	}
+	
+	var col = 0;
+	function date()
+	{
+		var pin = document.getElementById("pin");
+		pin.innerHTML = new Date().getHours() + " : " + new Date().getMinutes() + "M : " + new Date().getSeconds() + "S";
+		if(col%2 == 0)
+			{
+				pin.style.color="blue";
+				col+=1;
+			}
+		else
+			{
+				pin.style.color="red";
+				col+=1;
+			}
+			
+	}
+	setInterval(date,1000);
+	
+	
+	
+</script>
+<body>
+</body>
+</html>
